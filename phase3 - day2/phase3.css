@@ -1,0 +1,57 @@
+.container{
+    text-align: center;
+    font-weight: bold;
+
+}
+
+h1 {
+    color:black;
+
+
+}
+
+input {
+    padding: 10px;
+    margin: 2px;
+    width: 200px;
+    height: 35px;
+    margin: 5px;
+    
+}
+
+button {
+    
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+
+
+.navbar ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+}
+
+.navbar a {
+        text-decoration: none;
+        color: black;
+
+}
+
+/* Going to rewrite this today! */
+
+#homeSection, #listSection, #contactSection {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Here /*
