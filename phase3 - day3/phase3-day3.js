@@ -30,10 +30,10 @@ const addNewUser = (newUser) => {
 
 // FUNCTIONS
 const showError = () => {
-    title.textContent = "Please enter your name and age!";
-    title.style.color = "red";
-    button.textContent = "Click Me";
-};
+      title.textContent = "Please enter your name and age!";
+      title.style.color = "red";
+      button.textContent = "Click Me!";
+}
 
 const showGreeting = (name, age) => {
     title.textContent = `Hello ${name}, you are ${age} years old!`;
