@@ -1,3 +1,5 @@
+import UserCard from "./UserCard";
+
 function App() {
   return (
     <div>
@@ -7,6 +9,11 @@ function App() {
       <p>My First React app</p>
       <p> My Second paragraph </p>
       </section>
+
+      {/* UserCard import */}
+
+      <UserCard name = "Klint" age ={28} />
+      <UserCard name = "Karl" age ={25} /> 
       
       <nav className = "navbar">
        <ul>
