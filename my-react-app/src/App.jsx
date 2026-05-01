@@ -1,14 +1,27 @@
+import { useState } from "react";
 import UserCard from "./UserCard";
 
 function App() {
+
+{/* constant */}
+
+const [count, setCount] = useState(0);
+
   return (
+    
     <div>
+      {/* h2 and button */}
       <h1>Hello Guys!😤</h1>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>
+      Click This 😤 
+      </button>
 
       <section>
       <p>My First React app</p>
       <p> My Second paragraph </p>
       </section>
+
 
       {/* UserCard import */}
 
