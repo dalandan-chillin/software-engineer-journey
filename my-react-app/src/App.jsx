@@ -6,6 +6,8 @@ function App() {
 {/* constant */}
 
 const [count, setCount] = useState(0);
+const [name, setName] = useState("");
+
 
   return (
     
@@ -17,6 +19,16 @@ const [count, setCount] = useState(0);
       Click This 😤 
       </button>
 
+      {/* add input live */}
+      <input
+      type="text"
+      placeholder="Enter your name"
+      value={name}
+      onChange={(event) => setName(event.target.value)}
+      />
+
+      <h2>Hello, {name} 😤 </h2>
+
       <section>
       <p>My First React app</p>
       <p> My Second paragraph </p>
@@ -26,7 +38,7 @@ const [count, setCount] = useState(0);
       {/* UserCard import */}
 
       <UserCard name = "Klint" age ={28} />
-      <UserCard name = "Karl" age ={25} /> 
+      <UserCard name = "Karl" age ={25} />
       
       <nav className = "navbar">
        <ul>
