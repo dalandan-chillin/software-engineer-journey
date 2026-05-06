@@ -7,7 +7,11 @@ function App() {
 
 const [count, setCount] = useState(0);
 const [name, setName] = useState("");
-
+const users = [
+      { id: 1, name: "Karl", age: 26 },
+      { id: 2, name: "Tsi", age: 24 },
+      { id: 3, name: "Kai", age: 28 }
+];
 
   return (
     
@@ -33,13 +37,16 @@ const [name, setName] = useState("");
       <p>My First React app</p>
       <p> My Second paragraph </p>
       </section>
-
-
-      {/* UserCard import */}
-
-      <UserCard name = "Klint" age ={28} />
-      <UserCard name = "Karl" age ={25} />
       
+      {/* User.map */}
+      {users.map((user) => (
+          <UserCard
+            key={user.id}
+            name={user.name}
+            age={user.age}
+          />
+      ))}
+
       <nav className = "navbar">
        <ul>
           <li><a href = "#">Try Navigation</a></li>
