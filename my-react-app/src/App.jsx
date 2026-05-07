@@ -7,6 +7,9 @@ function App() {
 
 const [count, setCount] = useState(0);
 const [name, setName] = useState("");
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
 const users = [
       { id: 1, name: "Karl", age: 26 },
       { id: 2, name: "Tsi", age: 24 },
@@ -32,6 +35,24 @@ const users = [
       />
 
       <h2>Hello, {name} 😤 </h2>
+
+      {/* Button login */}
+      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
+      Toggle Login
+      </button>
+
+      {/* Conditional Rendering */}
+      {isLoggedIn ? (
+          <h2> Welcome back 😤 </h2>
+      ) : (   
+          <h2> Please log in </h2>
+
+      )}
+
+      {/* Bonus && Rendering */}
+      {isLoggedIn && (
+          <p>You can now access the dashboard!</p>
+      )}
 
       <section>
       <p>My First React app</p>
