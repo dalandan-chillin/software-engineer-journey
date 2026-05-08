@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 
 function App() {
@@ -8,13 +8,25 @@ function App() {
 const [count, setCount] = useState(0);
 const [name, setName] = useState("");
 const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
 const users = [
       { id: 1, name: "Karl", age: 26 },
       { id: 2, name: "Tsi", age: 24 },
       { id: 3, name: "Kai", age: 28 }
 ];
+
+{/* Api data */}
+const [apiUsers, setApiUsers] = useState([]);
+
+useEffect(() => {
+
+      fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setApiUsers(data);
+      });
+
+}, []);
+
 
   return (
     
@@ -67,6 +79,15 @@ const users = [
             age={user.age}
           />
       ))}
+
+      <h2> API Users </h2>
+      
+      {apiUsers.map((user) => ( 
+      <p key={user.id}>
+         {user.name}
+      </p>
+    ))}
+
 
       <nav className = "navbar">
        <ul>
