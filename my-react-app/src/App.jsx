@@ -14,6 +14,24 @@ const users = [
       { id: 3, name: "Kai", age: 28 }
 ];
 
+{/* New User */}
+const [newUser, setNewUser] = useState("");
+const [userList, setUserList] = useState([]);
+
+const addUser = () => {
+
+  if (newUser.trim() === "") return;
+
+  const user = {
+    id: Date.now(),
+    name: newUser
+  };
+
+  setUserList([...userList, user]);
+  setNewUser("");
+
+};
+
 {/* Api data */}
 const [apiUsers, setApiUsers] = useState([]);
 
@@ -52,6 +70,26 @@ useEffect(() => {
       <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
       Toggle Login
       </button>
+
+      {/* Input and Button */}
+      <input
+      type="text"
+      placeholder="Add new user"
+      value={newUser}
+      onChange={(event) => setNewUser(event.target.value)}
+      />
+
+      <button onClick={addUser}>
+      Add User 😤
+      </button>
+
+      <h2>User List 🔥</h2>
+
+      {userList.map((user) => (
+      <p key={user.id}>
+      {user.name}
+      </p>
+      ))}
 
       {/* Conditional Rendering */}
       {isLoggedIn ? (
