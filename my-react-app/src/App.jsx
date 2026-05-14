@@ -32,6 +32,19 @@ const addUser = () => {
 
 };
 
+{/* delete user */}
+
+const deleteUser = (id) => {
+
+    const updatedUsers = userList.filter(
+      (user) => user.id !== id
+    );
+
+    setUserList(updatedUsers);
+
+};
+ 
+
 {/* Api data */}
 const [apiUsers, setApiUsers] = useState([]);
 
@@ -85,10 +98,17 @@ useEffect(() => {
 
       <h2>User List 🔥</h2>
 
+      {/* Filter delete */}
       {userList.map((user) => (
-      <p key={user.id}>
-      {user.name}
-      </p>
+      <div key={user.id}>
+
+      <p>{user.name}</p>
+
+      <button onClick={() => deleteUser(user.id)}>
+      Delete 😤
+      </button>
+
+      </div>
       ))}
 
       {/* Conditional Rendering */}
