@@ -43,6 +43,38 @@ const deleteUser = (id) => {
     setUserList(updatedUsers);
 
 };
+
+{/* Edit users */ }
+
+const [editId, setEditId] = useState(null);
+const [editName, setEditName] = useState("");
+const startEdit = (user) => {
+
+      setEditId(user.id);
+      setEditName(user.name);
+}; 
+
+const saveEdit = () => {
+
+  const updatedUsers = userList.map((user) => {
+
+    if (user.id === editId) {
+      return {
+        ...user,
+        name: editName
+      };
+    }
+
+    return user;
+
+  });
+
+  setUserList(updatedUsers);
+
+  setEditId(null);
+  setEditName("");
+
+};
  
 
 {/* Api data */}
@@ -98,18 +130,40 @@ useEffect(() => {
 
       <h2>User List 🔥</h2>
 
-      {/* Filter delete */}
+      {/* Filter edit */}
       {userList.map((user) => (
-      <div key={user.id}>
+    <div key={user.id}>
 
-      <p>{user.name}</p>
+    <p>{user.name}</p>
 
-      <button onClick={() => deleteUser(user.id)}>
+    <button onClick={() => startEdit(user)}>
+      Edit 😤
+    </button>
+
+    <button onClick={() => deleteUser(user.id)}>
       Delete 😤
-      </button>
+    </button>
 
-      </div>
-      ))}
+  </div>
+  ))}
+
+  {/* Add Edit UI */}
+
+  {editId && (
+  <div>
+
+    <input
+      type="text"
+      value={editName}
+      onChange={(event) => setEditName(event.target.value)}
+    />
+
+    <button onClick={saveEdit}>
+      Save 😤
+    </button>
+
+  </div>
+)}
 
       {/* Conditional Rendering */}
       {isLoggedIn ? (
