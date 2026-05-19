@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
+import UserList from "./UserList";
 
 function App() {
 
@@ -128,25 +129,12 @@ useEffect(() => {
       Add User 😤
       </button>
 
-      <h2>User List 🔥</h2>
-
-      {/* Filter edit */}
-      {userList.map((user) => (
-    <div key={user.id}>
-
-    <p>{user.name}</p>
-
-    <button onClick={() => startEdit(user)}>
-      Edit 😤
-    </button>
-
-    <button onClick={() => deleteUser(user.id)}>
-      Delete 😤
-    </button>
-
-  </div>
-  ))}
-
+      <UserList
+      userList={userList}
+      deleteUser={deleteUser}
+      startEdit={startEdit}
+      />
+     
   {/* Add Edit UI */}
 
   {editId && (
