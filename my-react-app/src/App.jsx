@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 import UserList from "./UserList";
+import "./App.css";
 
 function App() {
 
@@ -58,7 +59,6 @@ const startEdit = (user) => {
 const saveEdit = () => {
 
   const updatedUsers = userList.map((user) => {
-
     if (user.id === editId) {
       return {
         ...user,
@@ -94,7 +94,7 @@ useEffect(() => {
 
   return (
     
-    <div>
+    <div className="container">
       {/* h2 and button */}
       <h1>Hello Guys!😤</h1>
       <h2>Count: {count}</h2>

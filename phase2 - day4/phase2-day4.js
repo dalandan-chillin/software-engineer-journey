@@ -192,3 +192,5 @@ let items = [
 ];
 
 items.forEach(item => console.log(item.name));
+
+

@@ -11,7 +11,7 @@ function UserList({
       <h2>User List 🔥</h2>
 
       {userList.map((user) => (
-        <div key={user.id}>
+        <div key={user.id} className="card">
 
           <p>{user.name}</p>
 
