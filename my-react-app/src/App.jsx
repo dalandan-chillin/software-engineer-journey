@@ -17,21 +17,23 @@ const users = [
 ];
 
 {/* New User */}
-const [newUser, setNewUser] = useState("");
+const [newName, setNewName] = useState("");
+const [newAge, setNewAge] = useState("");
 const [userList, setUserList] = useState([]);
 
 const addUser = () => {
 
-  if (newUser.trim() === "") return;
+  if (newName.trim() === "" || newAge.trim() === "" ) return;
 
   const user = {
     id: Date.now(),
-    name: newUser
+    name: newName,
+    age: newAge
   };
 
   setUserList([...userList, user]);
-  setNewUser("");
-
+  setNewName("");
+  setNewAge("");
 };
 
 {/* delete user */}
@@ -117,12 +119,18 @@ useEffect(() => {
       Toggle Login
       </button>
 
-      {/* Input and Button */}
       <input
       type="text"
-      placeholder="Add new user"
-      value={newUser}
-      onChange={(event) => setNewUser(event.target.value)}
+      placeholder="Enter name"
+      value={newName}
+      onChange={(event) => setNewName(event.target.value)}
+      />
+
+      <input
+      type="number"
+      placeholder="Enter age"
+      value={newAge}
+      onChange={(event) => setNewAge(event.target.value)}
       />
 
       <button onClick={addUser}>

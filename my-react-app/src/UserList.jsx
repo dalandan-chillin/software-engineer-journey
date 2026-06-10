@@ -13,7 +13,9 @@ function UserList({
       {userList.map((user) => (
         <div key={user.id} className="card">
 
-          <p>{user.name}</p>
+          <p>
+          {user.name} - Age: {user.age}
+         </p>
 
           <button onClick={() => startEdit(user)}>
             Edit 😤
