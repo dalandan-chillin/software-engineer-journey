@@ -20,16 +20,32 @@ const users = [
 const [newName, setNewName] = useState("");
 const [newAge, setNewAge] = useState("");
 const [userList, setUserList] = useState([]);
+const [error, setError] = useState("");
 
 const addUser = () => {
 
-  if (newName.trim() === "" || newAge.trim() === "" ) return;
+if (newName.trim() === "") {
+  setError("Please enter a name.");
+  return;
+}
+
+if (newAge.trim() === "") {
+  setError("Please enter an age.");
+  return;
+}
+
+if (Number(newAge) <= 0) {
+  setError("Age must be greater than 0.");
+  return;
+}
 
   const user = {
     id: Date.now(),
     name: newName,
     age: newAge
   };
+
+  setError("");
 
   setUserList([...userList, user]);
   setNewName("");
@@ -132,6 +148,8 @@ useEffect(() => {
       value={newAge}
       onChange={(event) => setNewAge(event.target.value)}
       />
+
+      {error && <p>{error}</p>}
 
       <button onClick={addUser}>
       Add User 😤
