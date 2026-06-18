@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 import UserList from "./UserList";
 import "./App.css";
-
+   
 function App() {
 
 {/* constant */}
@@ -19,7 +19,17 @@ const users = [
 {/* New User */}
 const [newName, setNewName] = useState("");
 const [newAge, setNewAge] = useState("");
-const [userList, setUserList] = useState([]);
+const [userList, setUserList] = useState(() => {
+
+const savedUsers = 
+      localStorage.getItem("users");
+
+return savedUsers
+      ? JSON.parse(savedUsers)
+      : [];
+});
+
+
 const [error, setError] = useState("");
 
 const addUser = () => {
@@ -108,6 +118,16 @@ useEffect(() => {
       });
 
 }, []);
+
+useEffect(() => {
+
+    localStorage.setItem(
+      "users",
+      JSON.stringify(userList)
+    );
+
+
+}, [userList]);
 
 
   return (
