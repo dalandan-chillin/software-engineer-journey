@@ -31,6 +31,7 @@ return savedUsers
 
 
 const [error, setError] = useState("");
+const [searchTerm, setSearchTerm] = useState("");
 
 const addUser = () => {
 
@@ -126,9 +127,14 @@ useEffect(() => {
       JSON.stringify(userList)
     );
 
-
 }, [userList]);
 
+{/* Filtered Users */} 
+const filteredUsers = userList.filter((user) => 
+user.name.toLowerCase().includes(
+  searchTerm.toLowerCase()
+  )
+);
 
   return (
     
@@ -175,8 +181,21 @@ useEffect(() => {
       Add User 😤
       </button>
 
+      {/* Search User */}
+
+      <h2>Total Users: {userList.length}</h2>
+
+      <h2>Search User 🔍</h2>
+
+      <input
+        type="text"
+        placeholder="Search user..."
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+      />
+
       <UserList
-      userList={userList}
+      userList={filteredUsers}
       deleteUser={deleteUser}
       startEdit={startEdit}
       />
