@@ -2,6 +2,15 @@ import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 import UserList from "./UserList";
 import "./App.css";
+import {
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Users from "./pages/Users";
    
 function App() {
 
@@ -139,131 +148,50 @@ user.name.toLowerCase().includes(
   return (
     
     <div className="container">
-      {/* h2 and button */}
-      <h1>Hello Guys!😤</h1>
-      <h2>Count: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>
-      Click This 😤 
-      </button>
 
-      {/* add input live */}
-      <input
-      type="text"
-      placeholder="Enter your name"
-      value={name}
-      onChange={(event) => setName(event.target.value)}
+      <nav>
+
+      <Link to="/">
+        Home
+      </Link>
+
+      {" | "}
+
+      <Link to="/about">
+        About
+      </Link>
+
+      {" | "}
+
+      <Link to="/users">
+        Users
+      </Link>
+
+    </nav>
+
+    <Routes>
+
+      <Route
+        path="/"
+        element={<Home />}
       />
 
-      <h2>Hello, {name} 😤 </h2>
-
-      {/* Button login */}
-      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
-      Toggle Login
-      </button>
-
-      <input
-      type="text"
-      placeholder="Enter name"
-      value={newName}
-      onChange={(event) => setNewName(event.target.value)}
+      <Route
+        path="/about"
+        element={<About />}
       />
 
-      <input
-      type="number"
-      placeholder="Enter age"
-      value={newAge}
-      onChange={(event) => setNewAge(event.target.value)}
+      <Route
+        path="/users"
+        element={<Users />}
       />
 
-      {error && <p>{error}</p>}
-
-      <button onClick={addUser}>
-      Add User 😤
-      </button>
-
-      {/* Search User */}
-
-      <h2>Total Users: {userList.length}</h2>
-
-      <h2>Search User 🔍</h2>
-
-      <input
-        type="text"
-        placeholder="Search user..."
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
-      />
-
-      <UserList
-      userList={filteredUsers}
-      deleteUser={deleteUser}
-      startEdit={startEdit}
-      />
-     
-  {/* Add Edit UI */}
-
-  {editId && (
-  <div>
-
-    <input
-      type="text"
-      value={editName}
-      onChange={(event) => setEditName(event.target.value)}
-    />
-
-    <button onClick={saveEdit}>
-      Save 😤
-    </button>
+    </Routes>
 
   </div>
-)}
 
-      {/* Conditional Rendering */}
-      {isLoggedIn ? (
-          <h2> Welcome back 😤 </h2>
-      ) : (   
-          <h2> Please log in </h2>
+);
 
-      )}
-
-      {/* Bonus && Rendering */}
-      {isLoggedIn && (
-          <p>You can now access the dashboard!</p>
-      )}
-
-      <section>
-      <p>My First React app</p>
-      <p> My Second paragraph </p>
-      </section>
-      
-      {/* User.map */}
-      {users.map((user) => (
-          <UserCard
-            key={user.id}
-            name={user.name}
-            age={user.age}
-          />
-      ))}
-
-      <h2> API Users </h2>
-      
-      {apiUsers.map((user) => ( 
-      <p key={user.id}>
-         {user.name}
-      </p>
-    ))}
-
-
-      <nav className = "navbar">
-       <ul>
-          <li><a href = "#">Try Navigation</a></li>
-          <li><a href = "#">First Navigation</a></li>
-          <li><a href = "#">Second Navigation</a></li>
-       </ul>
-      </nav>
-    </div>
-
-  );
 }
-
+   
 export default App;
