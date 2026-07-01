@@ -2,7 +2,7 @@ import "./App.css";
 import {
   Routes,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -16,23 +16,38 @@ function App() {
     
     <div className="container">
 
-      <nav>
+      <nav className="navbar">
 
-      <Link to="/">
-        Home
-      </Link>
+      <NavLink
+  to="/"
+  className={({ isActive }) =>
+    isActive ? "active" : ""
+  }
+>
+       🏠 Home
+      </NavLink>
 
       {" | "}
 
-      <Link to="/about">
-        About
-      </Link>
+      <NavLink
+  to="/about"
+  className={({ isActive }) =>
+    isActive ? "active" : ""
+  }
+>
+       ℹ️ About
+      </NavLink>
 
       {" | "}
 
-      <Link to="/users">
-        Users
-      </Link>
+      <NavLink
+  to="/users"
+  className={({ isActive }) =>
+    isActive ? "active" : ""
+  }
+>
+       👥 Users
+      </NavLink>
 
     </nav>
 
