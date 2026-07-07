@@ -3,8 +3,11 @@ import UserList from "../UserList";
 
 function Users() {
 
-const [newName, setNewName] = useState("");
-const [newAge, setNewAge] = useState("");
+const [formData, setFormData] = useState({
+      name: "",
+      age: ""
+});
+
 const [userList, setUserList] = useState(() => {
 
 const savedUsers = 
@@ -23,34 +26,52 @@ const [error, setError] = useState("");
 
 
 {/* add user */}
+
+const handleChange=(event) => {
+
+      const { name, value } = event.target;
+
+  setFormData({
+    ...formData,
+    [name]: value
+  });
+
+};
+
+
 const addUser = () => {
 
-if (newName.trim() === "") {
+if (formData.name.trim() === "") {
   setError("Please enter a name.");
   return;
 }
 
-if (newAge.trim() === "") {
+if (formData.age.trim() === "") {
   setError("Please enter an age.");
   return;
 }
 
-if (Number(newAge) <= 0) {
+if (Number(formData.age) <= 0) {
   setError("Age must be greater than 0.");
   return;
 }
 
   const user = {
     id: Date.now(),
-    name: newName,
-    age: newAge
+    name: formData.name,
+    age: formData.age
   };
 
   setError("");
 
   setUserList([...userList, user]);
-  setNewName("");
-  setNewAge("");
+  setFormData({
+    
+  name: "",
+
+  age: ""
+
+  });
 };
 
 {/* delete user */}
@@ -117,15 +138,17 @@ const filteredUsers = userList.filter((user) =>
                 <input
   type="text"
   placeholder="Enter name"
-  value={newName}
-  onChange={(event) => setNewName(event.target.value)}
+  name="name"
+  value={formData.name}
+  onChange={handleChange}
 />
 
 <input
   type="number"
   placeholder="Enter age"
-  value={newAge}
-  onChange={(event) => setNewAge(event.target.value)}
+  name="age"
+  value={formData.age}
+  onChange={handleChange}
 />
 
 {error && <p>{error}</p>}
