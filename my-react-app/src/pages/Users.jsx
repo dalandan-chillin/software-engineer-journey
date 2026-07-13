@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import UserList from "../UserList";
 
 function Users() {
@@ -125,11 +125,15 @@ useEffect(() => {
 }, [userList]);
 
 
-const filteredUsers = userList.filter((user) =>
-  user.name.toLowerCase().includes(
-    searchTerm.toLowerCase()
-  )
-);
+const filteredUsers = useMemo(() => {
+
+      return userList.filter((user) => 
+      user.name.toLowerCase().includes(
+      searchTerm.toLowerCase()
+      )
+    );
+
+}, [userList, searchTerm]);
 
 
         return(
