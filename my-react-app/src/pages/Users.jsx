@@ -1,7 +1,14 @@
-import { useState, useEffect, useMemo } from "react";
+import {
+  useState,
+  useEffect,
+  useMemo,
+  useRef
+} from "react";
 import UserList from "../UserList";
 
 function Users() {
+
+const inputRef = useRef(null);
 
 const [formData, setFormData] = useState({
       name: "",
@@ -25,6 +32,9 @@ const [searchTerm, setSearchTerm] = useState("");
 const [error, setError] = useState("");
 
 
+
+
+
 {/* add user */}
 
 const handleChange=(event) => {
@@ -38,6 +48,11 @@ const handleChange=(event) => {
 
 };
 
+const focusInput = () => {
+
+      inputRef.current.focus();
+
+};
 
 const addUser = () => {
 
@@ -73,6 +88,7 @@ if (Number(formData.age) <= 0) {
 
   });
 };
+
 
 {/* delete user */}
 
@@ -136,15 +152,17 @@ const filteredUsers = useMemo(() => {
 }, [userList, searchTerm]);
 
 
-        return(
-            <div>
-                <h1> 👥 Users Page </h1>
-                <input
+  return(
+  <div>
+  <h1> 👥 Users Page </h1>
+  <input
+  ref={inputRef}
   type="text"
   placeholder="Enter name"
   name="name"
   value={formData.name}
   onChange={handleChange}
+
 />
 
 <input
@@ -159,6 +177,11 @@ const filteredUsers = useMemo(() => {
 
 <button onClick={addUser}>
   Add User 😤
+</button>
+
+
+<button onClick={focusInput}>
+  Focus Name Input 🎯
 </button>
 
 <h2>Total Users: {userList.length}</h2>
