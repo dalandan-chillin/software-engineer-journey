@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Secrets: never commit real environment files
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+
+# Local video test files (large, and rights-sensitive)
+media/
+
+# Logs
+*.log
