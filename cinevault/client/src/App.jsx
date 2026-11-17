@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button'; 
 
 function App() {
   const [message, setMessage] = useState('Loading...');
@@ -22,12 +23,14 @@ function App() {
     <div className="w-full max-w-sm rounded-2xl bg-cv-card p-6 border border-white/10">
       <h1 className="text-2xl font-bold">CineVault</h1>
       <p className="mt-2 text-cv-muted">{message}</p>
-      <button className="mt-6 rounded-lg bg-cv-primary px-4 py-2 font-medium transition hover:brightness-110">
-        Watch now
-      </button>
-      <span className="ml-3 text-cv-accent">Secondary accent</span>
+       <div className="mt-6 flex flex-wrap gap-3">
+        <Button>Watch now</Button>
+        <Button variant="secondary">Add to list</Button>
+        <Button variant="outline">Trailer</Button>
+        <Button variant="ghost">More info</Button>
     </div>
-  </div>
+    </div>
+    </div>
 );
 }
 
