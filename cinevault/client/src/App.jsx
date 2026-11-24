@@ -1,5 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import PosterRow from '@/components/PosterRow';
+
 
 // TEMPORARY placeholder data. Phase 6 replaces this with real
 // metadata fetched from our backend (TMDB).
@@ -13,14 +15,24 @@ const placeholderFeatured = {
   genres: ['Sci-Fi', 'Adventure'],
 };
 
+function makePlaceholders(label, count) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: `${label}-${i + 1}`,
+    title: `${label} Title ${i + 1}`,
+    year: 2015 + i,
+    rating: (6.5 + i * 0.3).toFixed(1),
+  }));
+}
+
 function App() {
   return (
     <>
-      <Navbar />
+     <Navbar />
       <Hero {...placeholderFeatured} />
-      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        <h2 className="text-2xl font-semibold">Trending movies</h2>
-        <p className="mt-2 text-cv-muted">Poster rows go here next.</p>
+      <main className="mx-auto max-w-7xl space-y-10 px-4 py-10 sm:px-6">
+        <PosterRow title="Trending movies" items={makePlaceholders('Movie', 10)} />
+        <PosterRow title="Popular anime" items={makePlaceholders('Anime', 10)} />
+        <PosterRow title="Empty row test" items={[]} />
       </main>
     </>
   );
