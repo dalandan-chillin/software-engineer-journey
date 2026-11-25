@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PosterRow from '@/components/PosterRow';
-
+import Footer from '@/components/Footer';
 
 // TEMPORARY placeholder data. Phase 6 replaces this with real
 // metadata fetched from our backend (TMDB).
@@ -24,6 +24,9 @@ function makePlaceholders(label, count) {
   }));
 }
 
+
+// Main Content Section
+
 function App() {
   return (
     <>
@@ -34,6 +37,7 @@ function App() {
         <PosterRow title="Popular anime" items={makePlaceholders('Anime', 10)} />
         <PosterRow title="Empty row test" items={[]} />
       </main>
+      <Footer />
     </>
   );
 }
