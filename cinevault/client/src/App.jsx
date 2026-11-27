@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import PosterRow from '@/components/PosterRow';
 import Footer from '@/components/Footer';
 import LoginPage from '@/pages/LoginPage';
+import SignupPage from '@/pages/SignupPage';
 
 // TEMPORARY placeholder data. Phase 6 replaces this with real
 // metadata fetched from our backend (TMDB).
@@ -27,10 +28,11 @@ function makePlaceholders(label, count) {
 
 
 // Main Content Section
-const TEMP_VIEW = 'login'; // 'home' | 'login'
+const TEMP_VIEW = 'signup'; // 'home' | 'login' | 'Signup' 
 
 function App() {
    if (TEMP_VIEW === 'login') return <LoginPage />;
+   if (TEMP_VIEW === 'signup') return <SignupPage />;
   return (
     <>
      <Navbar />
